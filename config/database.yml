@@ -1,0 +1,84 @@
+# PostgreSQL. Les versions 9.3 et supérieures sont supportées.
+#
+# Installer le driver pg :
+#   gem install pg
+# Sur macOS avec Homebrew :
+#   gem install pg -- --with-pg-config=/usr/local/bin/pg_config
+# Sur Windows :
+#   gem install pg
+#       Choisissez la version win32.
+#       Installez PostgreSQL et ajoutez son répertoire /bin à votre PATH.
+#
+# Configurer via le Gemfile
+# gem "pg"
+#
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # Pour plus de détails sur le pooling de connexions, voir le guide de configuration Rails
+  # https://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: myapp_development
+
+  # Le rôle de base de données spécifié utilisé pour se connecter à PostgreSQL.
+  # Pour créer des rôles supplémentaires dans PostgreSQL, voir `$ createuser --help`.
+  # Lorsqu'il est laissé vide, PostgreSQL utilise le rôle par défaut.
+  # C’est le même nom que l’utilisateur du système d’exploitation exécutant Rails.
+  #username: myapp
+
+  # Le mot de passe associé au rôle PostgreSQL (nom d'utilisateur).
+  #password:
+
+  # Se connecter via un socket TCP. Non configuré par défaut car le client utilise un
+  # socket de domaine qui ne nécessite pas de configuration. Windows n'a pas de
+  # sockets de domaine, donc décommentez ces lignes.
+  #host: localhost
+
+  # Le port TCP sur lequel le serveur écoute. Défaut : 5432.
+  # Si votre serveur utilise un autre numéro de port, modifiez-le en conséquence.
+  #port: 5432
+
+  # Chemin de recherche du schéma. Par défaut, le serveur utilise $user,public.
+  #schema_search_path: myapp,sharedapp,public
+
+  # Niveaux minimum de log, par ordre croissant :
+  #   debug5, debug4, debug3, debug2, debug1,
+  #   log, notice, warning, error, fatal, et panic.
+  # Par défaut : warning.
+  #min_messages: notice
+
+# Attention : La base de données définie comme "test" sera effacée et
+# recréée à partir de votre base de développement lorsque vous exécuterez "rake".
+# Ne pas définir cette base de données comme celle de développement ou de production.
+test:
+  <<: *default
+  database: myapp_test
+
+# Comme pour config/credentials.yml, vous ne voulez jamais stocker d'informations sensibles,
+# comme votre mot de passe de base de données, dans votre code source. Si votre code source est
+# visible par quelqu'un, il aura accès à votre base de données.
+#
+# Fournissez plutôt le mot de passe ou une URL de connexion complète comme variable
+# d'environnement lorsque vous démarrez l'application. Par exemple :
+#
+#   DATABASE_URL="postgres://monutilisateur:monmotdepasse@localhost/ma_basededonnees"
+#
+# Si l'URL de connexion est fournie dans la variable d'environnement spéciale DATABASE_URL,
+# Rails fusionnera automatiquement ses valeurs de configuration avec celles
+# fournies dans ce fichier. Vous pouvez également spécifier une URL de connexion
+# via une autre variable d'environnement :
+#
+#   production:
+#     url: <%= ENV["MY_APP_DATABASE_URL"] %>
+#
+# Lire https://guides.rubyonrails.org/configuring.html#configuring-a-database
+# pour une vue d'ensemble complète sur comment configurer la connexion à la base de données.
+#
+production:
+  <<: *default
+  database: myapp_production
+  username: myapp
+  password: <%= ENV["MYAPP_DATABASE_PASSWORD"] %>
