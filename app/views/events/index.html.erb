@@ -1,5 +1,11 @@
 <!-- index.html.erb (affiche tous les événements) : -->
 
+<!-- Début de la page d'accueil affichant la liste des événements -->
+
+<!-- Lien pour accéder à la page de modification du profil (changement de l'email et du mot de passe) -->
+<%= link_to "Edit Profile", edit_user_registration_path %>
+
+
 <h1>Événements à venir</h1>                               <!-- Titre pour la section des événements futurs -->
 <ul>
   <% @future_events.each do |event| %>                    <!-- Itère sur chaque événement futur dans la collection @future_events -->

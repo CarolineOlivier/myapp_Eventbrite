@@ -1,0 +1,63 @@
+---
+fr:
+  devise:
+    sessions:
+      signed_out: Vous avez été déconnecté(e) avec succès.
+      signed_in: Connexion réussie.
+      user:
+        signed_in: Connexion réussie.
+    registrations:
+      edit:
+        title: Mon profil | Modifier l'utilisateur
+        email: Adresse email
+        password: Mot de passe (laisser vide si vous ne souhaitez pas le modifier)
+        password_confirmation: Confirmation du mot de passe
+        current_password: Mot de passe actuel (nous avons besoin de votre mot de passe
+          actuel pour confirmer vos modifications)
+        cancel_my_account: Supprimer mon compte
+        unhappy: Vous n'êtes pas satisfait(e) ?
+        back: Retour
+        profile: Modifier mon profil
+      signed_up: Inscription réussie
+      user:
+        signed_up: Inscription réussie
+      signed_in: Vous êtes maintenant connecté(e).
+    passwords:
+      new:
+        title: Mot de passe oublié ?
+        email: Adresse email
+        send_instructions: Envoyer les instructions de réinitialisation
+      user:
+        send_instructions: Les instructions pour réinitialiser votre mot de passe ont
+          été envoyées.
+    shared:
+      links:
+        profile: Mon profil
+        edit_profile: Modifier mon profil
+        log_out: Se déconnecter
+        sign_up: S'inscrire
+        log_in: Se connecter
+        forgot_password: Mot de passe oublié ?
+    failure:
+      unauthenticated: Vous devez être connecté pour accéder à cette page.
+  errors:
+    messages:
+      not_saved: "Impossible de sauvegarder %{resource} : %{errors}"
+      taken: est déjà pris(e)
+      blank: ne peut pas être vide
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              taken: est déjà utilisé(e)
+            first_name:
+              blank: ne peut pas être vide
+            last_name:
+              blank: ne peut pas être vide
+  date:
+    order:
+      - :day
+      - :month
+      - :year

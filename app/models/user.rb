@@ -3,7 +3,6 @@ class User < ApplicationRecord
     # Ajoute les modules Devise pour gérer l'authentification
     devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
 
-
     # Associe chaque utilisateur avec les événements qu'il a créés et auxquels il participe
     has_many :created_events, class_name: 'Event', foreign_key: 'admin_id', dependent: :destroy 
     has_many :attendances, dependent: :destroy                  # Associe un utilisateur à ses participations

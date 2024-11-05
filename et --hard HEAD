@@ -1,0 +1,6 @@
+[33ma6c5efb[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m pages d'acceuil de profil de détails event fonctionneent pb de rollback sur age de creation event botuon ne réagit pas
+[33maa9f709[m Ajustements récents : ajout de Devise dans le modèle User, vérification des références dans CreateAttendances migration
+[33m780360b[m Migration vers Devise et génération des vues d'authentification, avant de lancer db : migrate
+[33m106c921[m Ajout des routes
+[33m2b2d68a[m Ajout des migrations, controllers, modèles et vues pour le projet Eventbrite
+[33mdfcfd3b[m Initial commit

@@ -1,16 +1,22 @@
-<h2>Forgot your password?</h2>
+<!-- Écran de réinitialisation du mot de passe -->
+
+<h2><%= t('devise.passwords.new.title', default: "Mot de passe oublié ?") %></h2>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  <!-- Affiche les messages d'erreur liés au formulaire si des champs sont invalides -->
   <%= render "devise/shared/error_messages", resource: resource %>
 
+  <!-- Champ pour saisir l'email -->
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :email, t('devise.passwords.new.email', default: "Adresse email") %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
+  <!-- Bouton pour envoyer les instructions de réinitialisation du mot de passe -->
   <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
+    <%= f.submit t('devise.passwords.new.send_instructions', default: "Envoyer les instructions de réinitialisation") %>
   </div>
 <% end %>
 
+<!-- Liens supplémentaires de Devise, comme S'inscrire ou Se connecter -->
 <%= render "devise/shared/links" %>
