@@ -1,3 +1,6 @@
+ # le modèle  Attendance représente la participation à un événement. 
+ # C'est la table de jointure entre les événements et les participants à un événement 
+
 class Attendance < ApplicationRecord
   # Associations
   belongs_to :user           # Chaque participation est liée à un utilisateur

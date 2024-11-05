@@ -28,17 +28,16 @@ gem "jbuilder"
 gem 'dotenv-rails'
 
 # bcrypt est utilisé pour hacher et sécuriser les mots de passe des utilisateurs.
-gem "bcrypt", "~> 3.1.7"
+#gem "bcrypt", "~> 3.1.7"
+
+# devise est un outil pour ajouter des fonctionnalités d'authentification utilisateur (création de comptes, connexion).
+gem 'devise'
 
 # tzinfo-data est nécessaire pour inclure les fichiers de fuseaux horaires sur Windows et Jruby.
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
 # bootsnap accélère le temps de démarrage de l'application en utilisant un cache.
 gem "bootsnap", require: false
-
-# devise est un outil pour ajouter des fonctionnalités d'authentification utilisateur (création de comptes, connexion).
-gem 'devise'
-
 
 group :development, :test do
   # debug est un outil de débogage pour Ruby, permettant d'examiner et corriger des erreurs dans l'application.

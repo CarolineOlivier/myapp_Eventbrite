@@ -4,9 +4,6 @@ class User < ApplicationRecord
     has_many :attendances, dependent: :destroy                  # Associe un utilisateur à ses participations
     has_many :events, through: :attendances                     # L'utilisateur peut participer à plusieurs événements
   
-    # Gestion de mot de passe avec bcrypt (nécessite le champ `password_digest`)
-    has_secure_password
-  
     # Validations
     validates :email, presence: true, uniqueness: true          # Assure un email unique pour chaque utilisateur
     validates :first_name, presence: true                       # Le prénom est obligatoire
@@ -18,9 +15,12 @@ class User < ApplicationRecord
   
     private
   
-    # Envoie un e-mail de bienvenue à l'utilisateur lors de son inscription
+    # Méthode pour envoyer l’e-mail de bienvenue à l'utilisateur lors de son inscription
     def send_welcome_email
-      UserMailer.welcome_email(self).deliver_now
+      UserMailer.welcome_email(self).deliver_now         # Envoie l’e-mail immédiatement après création de l'utilisateur actuel (self) 
     end
   end
+  
+
+ 
   

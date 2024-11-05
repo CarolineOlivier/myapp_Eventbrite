@@ -1,0 +1,10 @@
+<!-- Template pour l’E-mail de Bienvenue -->
+
+<h1>Bienvenue sur Eventbrite, <%= @user.first_name %> !</h1>  <!-- Titre avec le prénom de l'utilisateur -->
+
+<p>
+  Nous sommes ravis de vous compter parmi nous ! Vous pouvez maintenant explorer les événements,
+  vous inscrire et même créer les vôtres.
+</p>
+
+<p>À très bientôt,<br> L'équipe Eventbrite</p>

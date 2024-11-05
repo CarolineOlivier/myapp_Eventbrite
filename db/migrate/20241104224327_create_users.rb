@@ -5,8 +5,8 @@ class CreateUsers < ActiveRecord::Migration[7.2]
       t.string :last_name  # Nom de l'utilisateur
       t.string :email, null: false, default: "" # Champ email obligatoire et non nul, avec une valeur par défaut vide
       t.text :description  # Description de l'utilisateur
-      t.string :password_digest, null: false, default: "" # Définit un champ password_digest, obligatoire,
-      # pour stocker le mot de passe chiffré avec bcrypt.
+      t.string :encrypted_password, null: false, default: "" # Définit un champ encrypted_password,, obligatoire,
+      # pour stocker le mot de passe chiffré avec devise
 
 
       t.timestamps # Ajoute created_at et updated_at automatiquement
