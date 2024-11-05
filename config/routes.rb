@@ -16,6 +16,15 @@ Rails.application.routes.draw do
   # Route pour servir le manifest de la PWA. Le manifest est un fichier JSON qui contient des métadonnées sur l'application,
   # comme le nom, les icônes et la couleur du thème, pour configurer l'apparence de l'application PWA.
 
+  # Routes pour Devise (authentification)
+  devise_for :users  # Gère l'inscription, la connexion, la déconnexion et autres routes d'authentification
+
+  #La ligne devise_for :users ajoute toutes les routes nécessaires pour l’authentification avec Devise, comme :
+
+  # /users/sign_in pour la connexion
+  # /users/sign_up pour l'inscription
+  #  /users/sign_out pour la déconnexion
+  #  et d’autres routes pour la gestion de mots de passe et de compte.
 
   # Routes pour les utilisateurs
   resources :users, only: [:index, :show, :new, :create]  # Gestion des utilisateurs : affichage, profils individuels, inscription

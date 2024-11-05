@@ -35,7 +35,8 @@ class CreateAttendances < ActiveRecord::Migration[7.2]
       t.timestamps
     end
     add_index :attendances, [:user_id, :event_id], unique: true 
-    #garantit qu'un utilisateur ne peut s'incrire qu'une fois au même événement
+    # Crée un index unique combinant user_id et event_id, 
+    # empêchant un utilisateur de s'inscrire plusieurs fois au même événement.
   end
 end
 

@@ -11,3 +11,7 @@ class Attendance < ApplicationRecord
   validates :user_id, uniqueness: { scope: :event_id }            # Un utilisateur ne peut s'inscrire qu'une fois à un même événement
 end
 
+# note : 
+# Dans le modèle Attendance, 
+# les associations belongs_to :user et belongs_to :event gèrentdéjà les attributs user_id et event_id.
+ # Rails ajoute automatiquement les colonnes user_id et event_id en base de données lorsqu’on utilise belongs_to.
