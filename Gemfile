@@ -1,4 +1,5 @@
 source "https://rubygems.org"
+'ruby-3.2.2'
 
 # Rails est le framework principal pour créer des applications web en Ruby.
 gem "rails", "~> 7.2.1", ">= 7.2.1.2"

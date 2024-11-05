@@ -4,8 +4,10 @@ class Event < ApplicationRecord
 #belongs_to :admin, class_name: 'User' : Cette ligne associe chaque événement à un administrateur qui est un utilisateur (User). 
 #En utilisant class_name: 'User', Rails sait que admin_id se réfère à la table users.
 
-
-
+    # Associe un événement à plusieurs participations (attendances) et 
+    # à plusieurs participants via ces participations
+    has_many :attendances, dependent: :destroy
+    has_many :participants, through: :attendances, source: :user
 
     # Validations
     validates :start_date, presence: true                                # Date de début obligatoire
@@ -26,3 +28,4 @@ class Event < ApplicationRecord
     errors.add(:duration, "doit être un multiple de 5") if duration.present? && duration % 5 != 0
     end
 end
+

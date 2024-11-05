@@ -7,7 +7,8 @@ class CreateEvents < ActiveRecord::Migration[7.0]
       t.text :description, null: false       # Description de l'événement, obligatoire
       t.integer :price, null: false          # Prix en euros, obligatoire
       t.string :location, null: false        # Lieu de l'événement, obligatoire
-
+      t.references :admin, null: false, foreign_key: { to_table: :users } # Référence à l'admin (User)
+      
       t.timestamps                           # Ajoute les colonnes created_at et updated_at.
     end
   end

@@ -17,6 +17,14 @@ class User < ApplicationRecord
   
     # Ajout d'un callback pour les actions après la création
     after_create :send_welcome_email
+
+     # Méthode pour retourner le nom complet de l'utilisateur **
+  def full_name
+    "#{first_name} #{last_name}"
+  end  
+
+  # def full_name** : Cette méthode concatène le prénom (first_name) et le nom (last_name) 
+  # pour afficher le nom complet de l'utilisateur.
   
     private
   

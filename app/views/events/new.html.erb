@@ -1,0 +1,59 @@
+<h1>Créer un nouvel événement</h1> <!-- Titre de la page pour le formulaire de création -->
+
+<!-- Affichage des erreurs de validation -->
+<% if @event.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@event.errors.count, "erreur") %> empêchent la création de l'événement :</h2>
+    <ul>
+      <% @event.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<!-- Début du formulaire pour @event -->
+<%= form_with model: @event, local: true do |form| %> 
+
+  <!-- Champ pour le titre de l'événement -->
+  <p>
+    <%= form.label :title, "Titre de l'événement" %><br> 
+    <%= form.text_field :title, required: true %> <!-- "required" pour obliger la saisie -->
+  </p>
+
+  <!-- Champ pour la description de l'événement -->
+  <p>
+    <%= form.label :description, "Description de l'événement" %><br> 
+    <%= form.text_area :description, required: true %> <!-- "required" pour obliger la saisie -->
+  </p>
+
+  <!-- Sélecteur pour la date de début de l'événement -->
+  <p>
+    <%= form.label :start_date, "Date de début" %><br> 
+    <%= form.datetime_select :start_date, required: true %> <!-- "required" pour obliger la saisie -->
+  </p>
+
+  <!-- Champ pour la durée de l'événement en minutes -->
+  <p>
+    <%= form.label :duration, "Durée (en minutes)" %><br> 
+    <%= form.number_field :duration, required: true, min: 5, step: 5 %> <!-- Durée minimum de 5 et par multiple de 5 -->
+  </p>
+
+  <!-- Champ pour le prix de l'événement en euros -->
+  <p>
+    <%= form.label :price, "Prix en euros" %><br> 
+    <%= form.number_field :price, required: true, min: 1, max: 1000 %> <!-- Prix entre 1 et 1000 euros -->
+  </p>
+
+  <!-- Champ pour le lieu de l'événement -->
+  <p>
+    <%= form.label :location, "Lieu de l'événement" %><br> 
+    <%= form.text_field :location, required: true %> <!-- "required" pour obliger la saisie -->
+  </p>
+
+  <!-- Bouton de soumission du formulaire -->
+  <p>
+    <%= form.submit "Créer l'événement" %>
+  </p>
+
+<% end %> <!-- Fin du formulaire -->

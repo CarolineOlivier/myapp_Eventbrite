@@ -1,4 +1,4 @@
-# index.html.erb (affiche tous les événements) :
+<!-- index.html.erb (affiche tous les événements) : -->
 
 <h1>Événements à venir</h1>                               <!-- Titre pour la section des événements futurs -->
 <ul>
@@ -15,3 +15,7 @@
     <!-- Lien vers chaque événement passé avec son titre et sa date de début formatée -->
   <% end %>
 </ul>
+
+<% if user_signed_in? %>
+  <%= link_to "Créer un nouvel événement", new_event_path, class: "btn btn-primary" %>
+<% end %>
