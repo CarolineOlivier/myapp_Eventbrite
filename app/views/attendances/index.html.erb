@@ -1,0 +1,8 @@
+# index.html.erb (affiche les participants à un événement) :
+
+<h1>Participants de <%= @event.title %></h1>                                   <!-- Titre de la page avec le nom de l'événement -->
+<ul>
+  <% @participants.each do |participant| %>                                    <!-- Itère sur chaque participant de l'événement -->
+    <li><%= participant.full_name %></li>                                      <!-- Affiche le nom complet de chaque participant -->
+  <% end %>
+</ul>

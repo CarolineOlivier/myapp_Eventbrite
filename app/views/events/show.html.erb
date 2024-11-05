@@ -1,0 +1,16 @@
+# show.html.erb (affiche les détails d’un événement) :
+
+<h1><%= @event.title %></h1>                                                    <!-- Titre de l'événement -->
+<p>Date de début : <%= @event.start_date.strftime('%d %b %Y %H:%M') %></p>      <!-- Affiche la date et l'heure de début -->
+<p>Durée : <%= @event.duration %> minutes</p>                                   <!-- Affiche la durée en minutes -->
+<p>Description : <%= @event.description %></p>                                  <!-- Affiche la description complète de l'événement -->
+<p>Prix : <%= @event.price %>€</p>                                              <!-- Affiche le prix de l'événement en euros -->
+<p>Lieu : <%= @event.location %></p>                                            <!-- Affiche le lieu de l'événement -->
+
+<h2>Participants :</h2>  <!-- Titre pour la section des participants -->
+<ul>
+  <% @participants.each do |participant| %>                                     <!-- Itère sur chaque participant de l'événement -->
+    <li><%= participant.full_name %></li>                                       <!-- Affiche le nom complet de chaque participant -->
+  <% end %>
+</ul>
+

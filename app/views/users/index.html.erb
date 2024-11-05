@@ -1,0 +1,12 @@
+# index.html.erb (affiche tous les utilisateurs) :
+
+<h1>Liste des utilisateurs</h1>                     #Titre de la page pour indiquer que c'est la liste des utilisateurs 
+<ul>
+  <% @users.each do |user| %>                        <!-- Itère sur chaque utilisateur dans la collection @users -->
+    <li><%= link_to user.full_name, user_path(user) %></li> 
+<!-- Crée un lien vers le profil de chaque utilisateur avec son nom complet -->
+  <% end %>
+</ul>
+
+
+

@@ -1,0 +1,33 @@
+<!-- new.html.erb (formulaire de création d’événement) : -->
+
+<h1>Créer un nouvel événement</h1>                                            <!-- Titre de la page pour le formulaire de création -->
+<%= form_with model: @event, local: true do |form| %>                         <!-- Formulaire pour l'objet @event -->
+  <p>
+    <%= form.label :title %><br>                                              <!-- Étiquette pour le champ titre -->
+    <%= form.text_field :title %>                                             <!-- Champ de saisie pour le titre de l'événement -->
+  </p>
+  <p>
+    <%= form.label :description %><br>                                        <!-- Étiquette pour le champ description -->
+    <%= form.text_area :description %>                                        <!-- Champ de texte pour la description de l'événement -->
+  </p>
+  <p>
+    <%= form.label :start_date %><br>                                         <!-- Étiquette pour le champ date de début -->
+    <%= form.datetime_select :start_date %>                                   <!-- Sélecteur de date et heure pour la date de début -->
+  </p>
+  <p>
+    <%= form.label :duration %><br>                                           <!-- Étiquette pour le champ durée -->
+    <%= form.number_field :duration %>                                        <!-- Champ de saisie numérique pour la durée en minutes -->
+  </p>
+  <p>
+    <%= form.label :price %><br>                                              <!-- Étiquette pour le champ prix -->
+    <%= form.number_field :price %>                                           <!-- Champ de saisie numérique pour le prix en euros -->
+  </p>
+  <p>
+    <%= form.label :location %><br>                                            <!-- Étiquette pour le champ lieu -->
+    <%= form.text_field :location %>                                           <!-- Champ de saisie pour le lieu de l'événement -->
+  </p>
+  <p>
+    <%= form.submit "Créer l'événement" %>                                     <!-- Bouton pour soumettre le formulaire -->
+  </p>
+<% end %>
+

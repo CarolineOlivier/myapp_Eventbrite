@@ -13,8 +13,8 @@
 # gem "pg"
 #
 default: &default
-  adapter: postgresql
-  encoding: unicode
+  adapter: postgresql          # Utilise PostgreSQL comme type de base de données
+  encoding: unicode             # Définit l'encodage des données en Unicode pour une compatibilité maximale.
   # Pour plus de détails sur le pooling de connexions, voir le guide de configuration Rails
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
@@ -82,3 +82,6 @@ production:
   database: myapp_production
   username: myapp
   password: <%= ENV["MYAPP_DATABASE_PASSWORD"] %>
+
+
+

@@ -1,0 +1,15 @@
+# show.html.erb (affiche le profil d’un utilisateur) :
+
+<h1>Profil de <%= @user.full_name %></h1>                      <!-- Affiche le nom complet de l'utilisateur comme titre -->
+<p>Email : <%= @user.email %></p>                              <!-- Affiche l'email de l'utilisateur -->
+<p>Description : <%= @user.description %></p>                  <!-- Affiche la description de l'utilisateur -->
+
+<h2>Événements créés par <%= @user.full_name %> :</h2>         <!-- Titre pour la liste des événements créés par l'utilisateur -->
+<ul>
+  <% @user.created_events.each do |event| %>                   <!-- Itère sur chaque événement créé par l'utilisateur -->
+    <li><%= link_to event.title, event_path(event) %></li>     <!-- Crée un lien vers chaque événement avec son titre -->
+  <% end %>
+</ul>
+
+
+

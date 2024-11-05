@@ -1,62 +1,72 @@
 source "https://rubygems.org"
 
-# Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
+# Rails est le framework principal pour créer des applications web en Ruby.
 gem "rails", "~> 7.2.1", ">= 7.2.1.2"
-# The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
+
+# sprockets-rails permet de gérer et de servir des fichiers d'assets (CSS, JS, images) dans les applications Rails.
 gem "sprockets-rails"
-# Use postgresql as the database for Active Record
+
+# pg est l'adaptateur PostgreSQL, utilisé pour connecter Rails à une base de données PostgreSQL.
 gem "pg", "~> 1.1"
-# Use the Puma web server [https://github.com/puma/puma]
+
+# Puma est un serveur d'applications rapide et léger pour exécuter des applications Rails en production.
 gem "puma", ">= 5.0"
-# Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
+
+# importmap-rails permet d'importer et de gérer les fichiers JavaScript en utilisant les import maps au lieu de Webpacker.
 gem "importmap-rails"
-# Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
+
+# turbo-rails fait partie de Hotwire et permet de créer des applications à page unique (SPA) sans utiliser trop de JavaScript.
 gem "turbo-rails"
-# Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
+
+# stimulus-rails est le framework JavaScript léger de Hotwire pour ajouter des comportements interactifs aux pages.
 gem "stimulus-rails"
-# Build JSON APIs with ease [https://github.com/rails/jbuilder]
+
+# jbuilder aide à générer des réponses JSON pour les API.
 gem "jbuilder"
-# Use Redis adapter to run Action Cable in production
-# gem "redis", ">= 4.0.1"
+
+# dotenv-rails permet de gérer les variables d'environnement dans un fichier `.env` pour stocker des informations sensibles.
 gem 'dotenv-rails'
 
-# Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
-# gem "kredis"
+# bcrypt est utilisé pour hacher et sécuriser les mots de passe des utilisateurs.
+gem "bcrypt", "~> 3.1.7"
 
-# Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
-# gem "bcrypt", "~> 3.1.7"
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+# tzinfo-data est nécessaire pour inclure les fichiers de fuseaux horaires sur Windows et Jruby.
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
-# Reduces boot times through caching; required in config/boot.rb
+# bootsnap accélère le temps de démarrage de l'application en utilisant un cache.
 gem "bootsnap", require: false
 
-# Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem "image_processing", "~> 1.2"
+# devise est un outil pour ajouter des fonctionnalités d'authentification utilisateur (création de comptes, connexion).
+gem 'devise'
+
 
 group :development, :test do
-  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  # debug est un outil de débogage pour Ruby, permettant d'examiner et corriger des erreurs dans l'application.
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
 
-  # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
+  # brakeman est un outil de sécurité qui analyse le code pour détecter les vulnérabilités.
   gem "brakeman", require: false
 
-  # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
+  # rubocop-rails-omakase est un outil de style pour Ruby qui impose des conventions de style de code.
   gem "rubocop-rails-omakase", require: false
 end
 
 group :development do
-  # Use console on exceptions pages [https://github.com/rails/web-console]
+  # web-console permet d'exécuter des commandes Rails directement dans le navigateur lors d'une erreur (utile pour le débogage).
   gem "web-console"
 end
 
 group :test do
-  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
+  # capybara est un outil de test pour simuler les interactions de l'utilisateur sur l'interface.
   gem "capybara"
+
+  # selenium-webdriver est utilisé par Capybara pour contrôler le navigateur lors des tests.
   gem "selenium-webdriver"
 end
 
+# dockerfile-rails aide à intégrer Docker dans un projet Rails, pour faciliter l'exécution et le déploiement.
 gem "dockerfile-rails", ">= 1.6", :group => :development
+
+
 
 

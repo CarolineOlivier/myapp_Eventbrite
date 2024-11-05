@@ -1,0 +1,17 @@
+# index.html.erb (affiche tous les événements) :
+
+<h1>Événements à venir</h1>                               <!-- Titre pour la section des événements futurs -->
+<ul>
+  <% @future_events.each do |event| %>                    <!-- Itère sur chaque événement futur dans la collection @future_events -->
+    <li><%= link_to event.title, event_path(event) %> - <%= event.start_date.strftime('%d %b %Y') %></li>  
+<!-- Lien vers chaque événement avec son titre et sa date de début formatée -->
+  <% end %>
+</ul>
+
+<h2>Événements passés</h2>                                 <!-- Titre pour la section des événements passés -->
+<ul>
+  <% @past_events.each do |event| %>                       <!-- Itère sur chaque événement passé dans la collection @past_events -->
+    <li><%= link_to event.title, event_path(event) %> - <%= event.start_date.strftime('%d %b %Y') %></li>  
+    <!-- Lien vers chaque événement passé avec son titre et sa date de début formatée -->
+  <% end %>
+</ul>

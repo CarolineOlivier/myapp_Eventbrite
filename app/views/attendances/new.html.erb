@@ -1,0 +1,12 @@
+# new.html.erb (formulaire d’inscription à un événement) :
+
+<h1>S'inscrire à l'événement : <%= @event.title %></h1>                         <!-- Titre de la page avec le nom de l'événement -->
+<%= form_with model: @attendance, local: true do |form| %>                      <!-- Formulaire pour l'objet @attendance -->
+  <p>
+    <%= form.label :stripe_customer_id, "Numéro de client Stripe" %><br>        <!-- Étiquette pour le champ Stripe -->
+    <%= form.text_field :stripe_customer_id %>                            <!-- Champ de saisie pour l'identifiant Stripe du client -->
+  </p>
+  <p>
+    <%= form.submit "S'inscrire" %>                                        <!-- Bouton pour soumettre le formulaire d'inscription -->
+  </p>
+<% end %>
