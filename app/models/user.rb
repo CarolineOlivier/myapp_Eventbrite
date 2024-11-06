@@ -15,7 +15,7 @@ class User < ApplicationRecord
     validates :description, length: { minimum: 20, maximum: 1000 }, allow_blank: true  # Description facultative mais avec limites de longueur
   
     # Ajout d'un callback pour les actions après la création
-    after_create :send_welcome_email
+    after_create :send_welcome_email   #callback after_create qui appelle la méthode welcome_email du mailer UserMailer.
 
      # Méthode pour retourner le nom complet de l'utilisateur **
   def full_name

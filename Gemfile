@@ -29,7 +29,7 @@ gem "jbuilder"
 gem 'dotenv-rails'
 
 # bcrypt est utilisé pour hacher et sécuriser les mots de passe des utilisateurs.
-#gem "bcrypt", "~> 3.1.7"
+# gem "bcrypt", "~> 3.1.7"
 
 # devise est un outil pour ajouter des fonctionnalités d'authentification utilisateur (création de comptes, connexion).
 gem 'devise'
@@ -52,8 +52,14 @@ group :development, :test do
 end
 
 group :development do
+  # letter_opener permet d'ouvrir les e-mails dans le navigateur en mode développement.
+  gem "letter_opener"
+
   # web-console permet d'exécuter des commandes Rails directement dans le navigateur lors d'une erreur (utile pour le débogage).
   gem "web-console"
+
+  # dockerfile-rails aide à intégrer Docker dans un projet Rails, pour faciliter l'exécution et le déploiement.
+  gem "dockerfile-rails", ">= 1.6"
 end
 
 group :test do
@@ -63,10 +69,3 @@ group :test do
   # selenium-webdriver est utilisé par Capybara pour contrôler le navigateur lors des tests.
   gem "selenium-webdriver"
 end
-
-# dockerfile-rails aide à intégrer Docker dans un projet Rails, pour faciliter l'exécution et le déploiement.
-gem "dockerfile-rails", ">= 1.6", :group => :development
-
-
-
-
