@@ -1,6 +1,7 @@
 class Event < ApplicationRecord
     # Associe chaque événement à un utilisateur en tant qu'administrateur
-    belongs_to :admin, class_name: 'User'
+    #belongs_to :admin, class_name: 'User'
+    belongs_to :admin, class_name: "User", foreign_key: "admin_id"
 #belongs_to :admin, class_name: 'User' : Cette ligne associe chaque événement à un administrateur qui est un utilisateur (User). 
 #En utilisant class_name: 'User', Rails sait que admin_id se réfère à la table users.
 
