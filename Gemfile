@@ -40,6 +40,16 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 # bootsnap accélère le temps de démarrage de l'application en utilisant un cache.
 gem "bootsnap", require: false
 
+gem 'bootstrap', '~> 5.1.0'
+
+# sassc-rails est une gem utilisée pour compiler les fichiers Sass (.scss) en CSS dans les applications Rails.
+# Elle remplace la gem `sass-rails` et utilise le compilateur `libsass`, qui est plus rapide que le compilateur Ruby Sass.
+# Sass est un préprocesseur CSS qui permet d'écrire du CSS de manière plus organisée et avec des fonctionnalités avancées
+# comme les variables, les imbrications, les mixins, etc. Cette gem est donc nécessaire pour gérer les fichiers `.scss`
+# dans une application Rails qui utilise des styles Bootstrap ou personnalisés.
+gem 'sassc-rails'
+
+
 group :development, :test do
   # debug est un outil de débogage pour Ruby, permettant d'examiner et corriger des erreurs dans l'application.
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
@@ -52,8 +62,13 @@ group :development, :test do
 end
 
 group :development do
-  # letter_opener permet d'ouvrir les e-mails dans le navigateur en mode développement.
+  # letter_opener permet d'ouvrir les e-mails dans le navigateur en mode développement
+  # en créant un fichier HTML dans le dossier tmp/letter_opener.
   gem "letter_opener"
+  
+  # letter_opener_web ajoute une interface web pour afficher tous les e-mails dans une archive en ligne.
+  # Accessible via http://localhost:3000/letter_opener.
+  gem 'letter_opener_web'
 
   # web-console permet d'exécuter des commandes Rails directement dans le navigateur lors d'une erreur (utile pour le débogage).
   gem "web-console"

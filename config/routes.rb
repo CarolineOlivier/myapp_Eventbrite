@@ -22,9 +22,22 @@ Rails.application.routes.draw do
   # Routes pour les événements avec participations
   resources :events do
     resources :attendances, only: [:index, :new, :create, :destroy]  # Routes pour afficher, créer, et supprimer des participations
-    #pour un événement spécifique
+    # pour un événement spécifique
   end
 
   # Définit la page d'accueil par défaut sur la liste des événements
-  root "events#index"  # Redirige la page d'accueil vers l'affichage des événements disponibles
+  root "events#index"  # Redirige la page d'accueil vers la liste des événements
+
+  # Route pour LetterOpenerWeb en mode développement
+  #if Rails.env.development?
+  # mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  #end
+
+    # Route pour LetterOpenerWeb en mode développement
+    if Rails.env.development?
+      mount LetterOpenerWeb::Engine, at: "/letter_opener-web"
+    end
 end
+# Mémo : 
+#Le montage de LetterOpenerWeb est conditionné par Rails.env.development?, donc il sera actif uniquement en développement.
+#L’emplacement at: "/letter_opener" est configuré pour que l’interface soit accessible à http://localhost:3000/letter_opener.

@@ -47,11 +47,32 @@ Rails.application.configure do
 
   # Définit l'URL de base utilisée dans les liens d'e-mails en développement.
   config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
+  
+  # Pour tester l'envoi des emails : 
 
-  # Définit `letter_opener` comme méthode de livraison des e-mails en développement.
-  # Cela ouvre les e-mails dans le navigateur au lieu de les envoyer réellement,
-  # pratique pour tester l'apparence et le contenu des e-mails.
-  config.action_mailer.delivery_method = :letter_opener
+  # option 1 :
+ # Définir `letter_opener_web` comme méthode de livraison par défaut pour les e-mails en développement.
+
+ #ligne de code désactivée et remplacée par la ligne apres les commentaires: 
+#config.action_mailer.delivery_method = :letter_opener_web  # remplacer letter_opener_web par letter_opener pour l'utiliser par défaut à la place
+ 
+  #Option 2  : 
+
+  # Définir la méthode de livraison des e-mails en développement en fonction de la variable d'environnement `MAILER_METHOD`.
+# Si `MAILER_METHOD` est définie dans le fichier `.env`, cette valeur sera utilisée pour `delivery_method`.
+# Par exemple, pour utiliser `letter_opener` plutôt que `letter_opener_web`, mettre `MAILER_METHOD=letter_opener` dans `.env`.
+# Sinon, Rails utilisera `letter_opener_web` comme méthode de livraison par défaut.
+config.action_mailer.delivery_method = ENV.fetch('MAILER_METHOD', 'letter_opener_web').to_sym
+# `.to_sym` convertit la valeur en symbole, comme `:letter_opener` ou `:letter_opener_web`, attendu par Rails.
+
+# différences entre letter_opener_web et letter_opener :  
+ # letter_opener permet d'ouvrir les e-mails dans le navigateur en mode développement en créant un fichier HTML dans le dossier tmp/letter_opener.
+ # tandis que letter_opener_web ajoute une interface web pour afficher tous les e-mails dans une archive en ligne.
+  # Accessible via http://localhost:3000/letter_opener.
+  
+config.action_mailer.perform_deliveries = true
+config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
 
   # Active l'envoi effectif des e-mails en développement.
   # Si cette option est sur `false`, aucun e-mail ne sera généré ni affiché.
