@@ -45,6 +45,7 @@ fr:
       not_saved: "Impossible de sauvegarder %{resource} : %{errors}"
       taken: est déjà pris(e)
       blank: ne peut pas être vide
+      confirmation: La confirmation ne correspond pas
   activerecord:
     errors:
       models:
@@ -56,6 +57,8 @@ fr:
               blank: ne peut pas être vide
             last_name:
               blank: ne peut pas être vide
+            password_confirmation:
+              confirmation: La confirmation du mot de passe ne correspond pas
   date:
     order:
       - :day

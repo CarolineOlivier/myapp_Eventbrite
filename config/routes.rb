@@ -17,7 +17,11 @@ Rails.application.routes.draw do
   devise_for :users  # Gère l'inscription, la connexion, la déconnexion et autres routes d'authentification
 
   # Routes pour les utilisateurs
-  resources :users, only: [:index, :show, :new, :create]  # Gestion des utilisateurs : affichage, profils individuels, inscription
+  resources :users, only: [:index, :show, :new, :create] do # Gestion des utilisateurs : affichage, profils individuels, inscription
+    member do
+      get 'events', to: 'attendances#index', as: :events
+    end
+  end
 
   # Routes pour les événements avec participations
   resources :events do

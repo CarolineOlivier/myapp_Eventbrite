@@ -2,40 +2,38 @@
 <html>
   <head>
     <title><%= content_for(:title) || "Eventbrite" %></title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= yield :head %>
-
-    <link rel="manifest" href="/manifest.json">
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <!-- Messages flash pour les notifications  -->
+    <!-- Navbar -->
+    <header class="navbar">
+      <div class="navbar-container">
+        <%= link_to "Accueil", root_path, class: "nav-button" %>
+        
+        <% if user_signed_in? %>
+          <%= link_to "Mon profil", user_path(current_user), class: "nav-button" %>
+          <%= link_to "Éditer le profil", edit_user_registration_path, class: "nav-button" %> <!-- Route Devise pour l'édition du profil -->
+          <%= link_to "Mes inscriptions", events_user_path(current_user), class: "nav-button" %> <!-- Nom correct de la route -->
+          <%= link_to "Créer un événement", new_event_path, class: "nav-button" %>
+          <%= form_with url: destroy_user_session_path, method: :delete, class: "nav-form" do %>
+            <%= submit_tag "Se déconnecter", class: "nav-button" %>
+          <% end %>
+        <% else %>
+          <%= link_to "S'inscrire", new_user_registration_path, class: "nav-button" %>
+          <%= link_to "Se connecter", new_user_session_path, class: "nav-button" %>
+        <% end %>
+      </div>
+    </header>
+
+    <!-- Messages flash pour les notifications -->
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
-    <!-- Ancienne Navbar -->
-    <nav>
-      <% if user_signed_in? %>
-        <%= link_to 'Mon profil', user_path(current_user) %> |
-        <%= form_with url: destroy_user_session_path, method: :delete do %>
-          <%= submit_tag 'Se déconnecter' %>
-        <% end %>
-      <% else %>
-        <%= link_to 'S\'inscrire', new_user_registration_path %> |
-        <%= link_to 'Se connecter', new_user_session_path %>
-      <% end %>
-    </nav>
-
-    <%= yield %>
+    <%= yield %> <!-- Contenu principal -->
   </body>
 </html>
