@@ -1,0 +1,102 @@
+/* Styles pour la page d'accueil */
+.events-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 colonnes : 4 pour les événements à venir, 1 pour les événements passés */
+    gap: 20px; /* Espace entre les colonnes */
+    margin: 20px; /* Espacement autour de la grille */
+}
+
+.logo-container {
+    display: flex;
+    justify-content: flex-start; /* Place le logo à gauche */
+    margin-bottom: 5px; /* Espace sous le logo */
+    padding-top: 30px; /* Espace au-dessus du logo pour la distance avec la navbar */
+}
+
+.homepage-logo {
+    width: 130px; /* Ajuste la largeur du logo */
+    height: auto; /* Maintient le ratio de la hauteur automatiquement */
+    border-radius: 20px; /* Adoucit les bords du logo */
+    opacity: 0.8; /* Transparence du logo */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Effets de transition pour l'opacité et le zoom */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Ombre portée du logo */
+}
+
+.homepage-logo:hover {
+    opacity: 1; /* Restaure l'opacité complète au survol */
+    transform: scale(1.2); /* Effet de zoom au survol */
+}
+
+.title {
+    text-align: center; /* Centre le texte du titre */
+    font-size: 30px; /* Taille du texte */
+    color: #e0e0e0; /* Couleur du texte */
+    margin-bottom: 20px; /* Espace en bas du titre */
+    padding-top: 10px; /* Espace au-dessus du titre pour la distance avec la navbar */
+}
+
+/* Autres styles pour les événements */
+.cards-grid {
+    grid-column: span 4; /* Les cartes des événements futurs occupent 4 colonnes */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 colonnes pour les événements futurs */
+    gap: 20px; /* Espace entre les cartes */
+}
+
+.card {
+    position: relative; /* Permet de positionner le pseudo-élément ::before par rapport à la carte */
+    background-color: #2a2a2a; /* Couleur de fond de la carte (gris foncé) */
+    color: #e0e0e0; /* Couleur du texte sur la carte (blanc cassé) */
+    border-radius: 8px; /* Coins arrondis pour un effet visuel plus doux */
+    padding: 20px; /* Espacement intérieur de la carte */
+    border: 2px solid #2a2a2a; /* Bordure invisible (même couleur que le fond) */
+    overflow: hidden; /* Empêche les éléments à l'intérieur de dépasser les limites de la carte */
+    transition: transform 0.3s ease, border-color 0.3s ease; /* Transitions fluides pour le zoom et la bordure */
+    box-sizing: border-box; /* Inclut les bordures et le padding dans les dimensions de la carte */
+}
+
+.card:hover {
+    transform: scale(1.05); /* Zoom de 5% sur la carte au survol */
+    border-color: #cba6d700; /* Assure que la bordure reste invisible */
+}
+
+.events-passed {
+    grid-column: span 1; /* La carte des événements passés occupe 1 colonne */
+    height: 300px; /* Hauteur maximale pour la carte */
+    overflow-y: auto; /* Défilement vertical si nécessaire */
+}
+
+.events-passed-list {
+    max-height: 100%; /* Hauteur maximale de la liste */
+    overflow-y: auto; /* Défilement vertical */
+}
+
+/* Pseudo-élément pour créer le point lumineux */
+.card::before {
+    content: ""; /* Crée un élément vide pour le point lumineux */
+    position: absolute; /* Positionne le point par rapport à la carte */
+    top: 0; /* Position initiale : en haut */
+    left: 0; /* Position initiale : à gauche */
+    width: 8px; /* Largeur du point */
+    height: 10px; /* Hauteur du point */
+    border-radius: 40%; /* Forme le point arrondi */
+    background-color: #af6e94; /* Couleur prune métallisée */
+    box-shadow: 0 0 20px #ff99cc; /* Effet lumineux autour du point */
+    transform: translate(-50%, -50%); /* Centre le point lumineux */
+    opacity: 0; /* Invisible par défaut */
+    z-index: 10; /* Le point est au-dessus de la carte */
+    pointer-events: none; /* Ne capte pas les interactions de la souris */
+}
+
+.card:hover::before {
+    opacity: 1; /* Le point devient visible au survol */
+    animation: light-dot 10s linear infinite; /* Animation de 10s pour faire le tour de la carte */
+}
+
+@keyframes light-dot {
+    0% { top: 0; left: 0; } /* Départ : en haut à gauche */
+    25% { top: 0; left: 100%; } /* En haut à droite */
+    50% { top: 100%; left: 100%; } /* En bas à droite */
+    75% { top: 100%; left: 0; } /* En bas à gauche */
+    100% { top: 0; left: 0; } /* Retour au point de départ */
+}
