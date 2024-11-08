@@ -2,7 +2,7 @@ source "https://rubygems.org"
 'ruby-3.2.2'
 
 # Rails est le framework principal pour créer des applications web en Ruby.
-gem "rails", "~> 7.2.1", ">= 7.2.1.2"
+gem "rails", "~> 8.0.0"
 
 # sprockets-rails permet de gérer et de servir des fichiers d'assets (CSS, JS, images) dans les applications Rails.
 gem "sprockets-rails"
