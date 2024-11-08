@@ -4,12 +4,14 @@ class EventsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
 
   # Affiche la liste des événements futurs et passés
-  def index
-    # Récupère les événements à venir, triés par date
-    @future_events = Event.where("start_date >= ?", Date.today).order(:start_date)
-    # Récupère les événements passés, triés de la date la plus récente à la plus ancienne
-    @past_events = Event.where("start_date < ?", Date.today).order(start_date: :desc)
-  end
+    def index
+      # Récupère les événements à venir, triés par date
+      @upcoming_events = Event.where("start_date >= ?", Date.today).order(start_date: :asc)
+      @past_events = Event.where("start_date < ?", Date.today).order(start_date: :desc)
+      # Récupère les événements passés, triés de la date la plus récente à la plus ancienne
+    end
+  
+  
 
   # Affiche les détails d'un événement spécifique
   def show

@@ -2,26 +2,32 @@
 
 <!-- Début de la page d'accueil affichant la liste des événements -->
 
-<!-- Lien pour accéder à la page de modification du profil (changement de l'email et du mot de passe) -->
-<%= link_to "Edit Profile", edit_user_registration_path %>
+<%= image_tag "android-chrome-192x192.png", alt: "Logo", class: "homepage-logo" %>
+<%= stylesheet_link_tag "events", "data-turbo-track": "reload" %>
 
 
-<h1>Événements à venir</h1>                               <!-- Titre pour la section des événements futurs -->
-<ul>
-  <% @future_events.each do |event| %>                    <!-- Itère sur chaque événement futur dans la collection @future_events -->
-    <li><%= link_to event.title, event_path(event) %> - <%= event.start_date.strftime('%d %b %Y') %></li>  
-<!-- Lien vers chaque événement avec son titre et sa date de début formatée -->
-  <% end %>
-</ul>
+<h2 class="title">Événements à venir</h2>
 
-<h2>Événements passés</h2>                                 <!-- Titre pour la section des événements passés -->
-<ul>
-  <% @past_events.each do |event| %>                       <!-- Itère sur chaque événement passé dans la collection @past_events -->
-    <li><%= link_to event.title, event_path(event) %> - <%= event.start_date.strftime('%d %b %Y') %></li>  
-    <!-- Lien vers chaque événement passé avec son titre et sa date de début formatée -->
-  <% end %>
-</ul>
+<div class="events-container">
+  <!-- Section pour les événements à venir, affichés dans des cartes -->
+  <div class="cards-grid">
+    <% @upcoming_events.each do |event| %>
+      <div class="card">
+        <h3 class="card-title"><%= link_to event.title, event_path(event) %></h3>
+        <p>Date : <%= event.start_date.strftime("%d %b %Y") %></p>
+        <p>Lieu : <%= event.location %></p>
+        <p>Description : <%= truncate(event.description, length: 100) %></p>
+      </div>
+    <% end %>
+  </div>
 
-<% if user_signed_in? %>
-  <%= link_to "Créer un nouvel événement", new_event_path, class: "btn btn-primary" %>
-<% end %>
+  <!-- Section pour les événements passés, affichés sous forme de liste avec effet de défilement -->
+  <div class="card events-passed">
+    <h3>Événements passés</h3>
+    <div class="events-passed-list">
+      <% @past_events.each do |event| %>
+        <p><%= link_to event.title, event_path(event) %> - <%= event.start_date.strftime("%d %b %Y") %></p>
+      <% end %>
+    </div>
+  </div>
+</div>

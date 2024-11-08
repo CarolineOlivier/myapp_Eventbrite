@@ -7,9 +7,25 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+    <!-- Favicon standard 16x16 -->
+<link rel="icon" type="image/png" sizes="16x16" href="<%= asset_path 'favicon-16x16.png' %>">
+
+<!-- Favicon haute résolution 32x32 -->
+<link rel="icon" type="image/png" sizes="32x32" href="<%= asset_path 'favicon-32x32.png' %>">
+
+<!-- Favicon pour Apple Touch (icônes sur appareils Apple) -->
+<link rel="apple-touch-icon" href="<%= asset_path 'apple-touch-icon.png' %>">
+
+<!-- Icône pour Android Chrome (192x192) -->
+<link rel="icon" type="image/png" sizes="192x192" href="<%= asset_path 'android-chrome-192x192.png' %>">
+
+<!-- Icône pour Android Chrome (512x512) -->
+<link rel="icon" type="image/png" sizes="512x512" href="<%= asset_path 'android-chrome-512x512.png' %>">
+
   </head>
 
-  <body>
+  <body class="dark-mode"> <!-- Application du mode sombre -->
     <!-- Navbar -->
     <header class="navbar">
       <div class="navbar-container">
@@ -17,9 +33,11 @@
         
         <% if user_signed_in? %>
           <%= link_to "Mon profil", user_path(current_user), class: "nav-button" %>
-          <%= link_to "Éditer le profil", edit_user_registration_path, class: "nav-button" %> <!-- Route Devise pour l'édition du profil -->
-          <%= link_to "Mes inscriptions", events_user_path(current_user), class: "nav-button" %> <!-- Nom correct de la route -->
+          <%= link_to "Éditer le profil", edit_user_registration_path, class: "nav-button" %>
+          <%= link_to "Mes inscriptions", events_user_path(current_user), class: "nav-button" %>
           <%= link_to "Créer un événement", new_event_path, class: "nav-button" %>
+          
+          <!-- Bouton de déconnexion -->
           <%= form_with url: destroy_user_session_path, method: :delete, class: "nav-form" do %>
             <%= submit_tag "Se déconnecter", class: "nav-button" %>
           <% end %>
@@ -30,9 +48,15 @@
       </div>
     </header>
 
-    <!-- Messages flash pour les notifications -->
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+   <!-- Messages flash pour les notifications, affichés uniquement s'il y a un message -->
+<% if notice.present? %>
+  <p class="notice"><%= notice %></p>
+<% end %>
+
+<% if alert.present? %>
+  <p class="alert"><%= alert %></p>
+<% end %>
+
 
     <%= yield %> <!-- Contenu principal -->
   </body>
