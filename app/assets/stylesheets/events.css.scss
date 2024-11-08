@@ -1,4 +1,6 @@
 /* Styles pour la page d'accueil */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 .events-container {
     display: grid;
     grid-template-columns: repeat(5, 1fr); /* 5 colonnes : 4 pour les événements à venir, 1 pour les événements passés */
@@ -8,18 +10,27 @@
 
 .logo-container {
     display: flex;
-    justify-content: flex-start; /* Place le logo à gauche */
+    align-items: center;
     margin-bottom: 5px; /* Espace sous le logo */
     padding-top: 30px; /* Espace au-dessus du logo pour la distance avec la navbar */
+    margin-left: 30px;
+}
+
+.logo-name {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 450;
+    font-style: normal; 
+    font-size: 34px;
+    letter-spacing: -1.5px;
 }
 
 .homepage-logo {
-    width: 130px; /* Ajuste la largeur du logo */
+    width: 320px; /* Ajuste la largeur du logo */
     height: auto; /* Maintient le ratio de la hauteur automatiquement */
     border-radius: 20px; /* Adoucit les bords du logo */
     opacity: 0.8; /* Transparence du logo */
     transition: opacity 0.3s ease, transform 0.3s ease; /* Effets de transition pour l'opacité et le zoom */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Ombre portée du logo */
 }
 
 .homepage-logo:hover {
