@@ -40,7 +40,7 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 # bootsnap accélère le temps de démarrage de l'application en utilisant un cache.
 gem "bootsnap", require: false
 
-gem 'bootstrap', '~> 5.1.0'
+gem 'bootstrap', '~> 5.3.3'
 
 # sassc-rails est une gem utilisée pour compiler les fichiers Sass (.scss) en CSS dans les applications Rails.
 # Elle remplace la gem `sass-rails` et utilise le compilateur `libsass`, qui est plus rapide que le compilateur Ruby Sass.
